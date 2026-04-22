@@ -17,59 +17,8 @@ El sistema utiliza una arquitectura de microservicios desacoplados que se comuni
 * **Configuración:** Bases de datos independientes por servicio (Principio de Aislamiento).
 
 
+<img width="1598" height="766" alt="image" src="https://github.com/user-attachments/assets/75373b7f-25cf-4841-9088-c9ef9824d352" />
 
-graph TD
-
-%% CLIENTE
-A[Cliente / Frontend] --> B[API Gateway]
-
-%% GATEWAY A SERVICIOS
-B --> C[Auth Service]
-B --> D[Customer Service]
-B --> E[Restaurant Service]
-B --> F[Catalog Service]
-B --> G[Inventory Service]
-B --> H[Order Service]
-B --> I[Payment Service]
-B --> J[Delivery Service]
-B --> K[Review Service]
-
-%% EUREKA
-C --> Z[Eureka Server]
-D --> Z
-E --> Z
-F --> Z
-G --> Z
-H --> Z
-I --> Z
-J --> Z
-K --> Z
-L[Notification Service] --> Z
-
-%% BASES DE DATOS (UNA POR SERVICIO)
-C --> DB1[(Auth DB)]
-D --> DB2[(Customer DB)]
-E --> DB3[(Restaurant DB)]
-F --> DB4[(Catalog DB)]
-G --> DB5[(Inventory DB)]
-H --> DB6[(Order DB)]
-I --> DB7[(Payment DB)]
-J --> DB8[(Delivery DB)]
-K --> DB9[(Review DB)]
-L --> DB10[(Notification DB)]
-
-%% COMUNICACIÓN SINCRÓNICA (Feign)
-H -->|Verifica stock| G
-H -->|Consulta cliente| D
-H -->|Consulta restaurante| E
-
-%% KAFKA (EVENTOS)
-I -->|Evento: Pago Exitoso| M[(Kafka)]
-M --> L
-M --> J
-
-%% NOTIFICACIONES
-L -->|Email / Alerta| A
 
 
 ## 🛠️ Tecnologías
