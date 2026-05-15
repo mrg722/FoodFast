@@ -1,0 +1,85 @@
+{
+  "info": {
+    "name": "FoodFast autenticacion-servicio V2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/actuator/health"
+      }
+    },
+    {
+      "name": "Registrar ADMIN",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Administrador FoodFast\",\n  \"email\": \"admin@foodfast.cl\",\n  \"password\": \"123456\",\n  \"rol\": \"ADMIN\"\n}"
+        },
+        "url": "{{baseUrl}}/api/auth/registro"
+      }
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"admin@foodfast.cl\",\n  \"password\": \"123456\"\n}"
+        },
+        "url": "{{baseUrl}}/api/auth/login"
+      }
+    },
+    {
+      "name": "Perfil",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/auth/perfil"
+      }
+    },
+    {
+      "name": "Listar usuarios",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/auth/usuarios"
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8090"
+    },
+    {
+      "key": "token",
+      "value": "PEGAR_TOKEN_AQUI"
+    }
+  ]
+}
