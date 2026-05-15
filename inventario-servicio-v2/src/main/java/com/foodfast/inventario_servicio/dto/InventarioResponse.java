@@ -1,0 +1,19 @@
+package com.foodfast.inventario_servicio.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class InventarioResponse {
+    private Long id;
+    private Long productoId;
+    private Integer cantidadDisponible;
+    private Integer cantidadReservada;
+    private Integer stockReal;
+    private String ubicacion;
+}
